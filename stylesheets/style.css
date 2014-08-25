@@ -423,6 +423,39 @@ textarea {
 }
 
 /*footer */
+
+#foot {
+width:260px;	
+display: inline-block;
+float:left;
+padding-right: 5px;
+text-align:none;
+}
+
+#foot li{
+text-align:left;
+list-style-type:none;
+padding-bottom:20px;
+}
+
+#foot li a{
+color: #fff;
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
 .footer {
   background: #3d4b4c;
   padding: 40px 0 20px;
