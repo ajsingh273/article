@@ -1,0 +1,80 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://pure.github.io/pure/libs/pure.js"></script>
+
+
+<div class="articles">
+<dl class="article">
+	<dt>addresses</dt>
+    <dd class="addresses"></dd>
+    <dt>alt_names</dt>
+    <dd class="alt_names"></dd>
+    <dt>citizenships</dt>
+    <dd class="citizenships"></dd>
+    <dt>dates_of_birth</dt>
+    <dd class="dates_of_birth"></dd>
+    <dt>entity_number</dt>
+    <dd class="entity_number"></dd>
+    <dt>ids</dt>
+    <dd class="ids"></dd>
+    <dt>nationalities</dt>
+    <dd class="nationalities"></dd>
+    <dt>places_of_birth</dt>
+    <dd class="places_of_birth"></dd>
+    <dt>programs</dt>
+    <dd class="programs"></dd>
+    <dt>remarks</dt>
+    <dd class="remarks"></dd>
+	<dt>sdn_type</dt>
+    <dd class="sdn_type"></dd>
+    <dt>source</dt>
+    <dd class="source"></dd>
+    <dt>source_list_url</dt>
+    <dd class="source_list_url"></dd>  
+    <dt>title</dt>
+    <dd class="title"></dd>
+    </br></br></br></br>          
+</dl>
+</div>
+
+<script>
+(function() {
+  var ready, renderData;
+  renderData = function(data) {
+    var articles, article, i, _i, _len, _results;
+    articles = data.results;
+    directive = {
+      '.article': {
+        'article <- articles': {
+          '.addresses': 'article.addresses',
+          '.alt_names': 'article.alt_names',
+          '.citizenships': 'article.citizenships',
+          '.dates_of_birth': 'article.dates_of_birth',
+          '.entity_number': 'article.entity_number',
+          '.ids': 'article.ids',
+          '.nationalities': 'article.nationalities',
+          '.places_of_birth': 'article.places_of_birth',
+          '.programs': 'article.programs',
+          '.remarks': 'article.remarks',
+          '.sdn_type': 'article.sdn_type',
+          '.source': 'article.source',
+          '.source_list_url': 'article.source_list_url',
+          '.title': 'article.title',
+          
+        }
+      }
+    };
+    rfn = $p('.articles').compile(directive);
+    return $p('.articles').render({ articles: articles }, directive);
+  };
+
+  ready = function() {
+    var url;
+    url = 'http://api.trade.gov/consolidated_screening_list/search?callback=?';
+    return $.getJSON(url, renderData);
+  };
+
+  $(document).ready(ready);
+
+  }).call(this);
+</script>
+
