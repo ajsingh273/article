@@ -402,6 +402,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   padding: 15px;
   height: 3rem;
   margin-bottom: 1.875rem;
+  border: 1px solid #03738c;
 }
 
 textarea {
