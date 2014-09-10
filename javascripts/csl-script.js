@@ -69,7 +69,7 @@
 						
 						
 						 
-					list += "<p class='results-legend'>" + "<table> <tr><td>Addresses</td><td>" + addresses + "</td></tr> <tr><td>Alternate Names</td><td>" +  alt_names + "</td></tr> <tr><td>Citizenships</td><td>" +  citizenships + "</td></tr> <tr><td>Dates of Birth</td><td>" +  dates_of_birth + "</td></tr> <tr><td>Entity Number</td><td>" +  entity_number + "</td></tr> <tr><td>IDs</td><td>" +  ids + "</td></tr> <tr><td>Name</td><td>" +  name + "</td></tr> <tr><td>Nationalities</td><td>" +  nationalities + "</td></tr> <tr><td>Places of Birth</td><td>" +  places_of_birth + "</td></tr> <tr><td>Programs</td><td>" +  programs + "</td></tr> <tr><td>Remarks</td><td>" +  remarks + "</td></tr> <tr><td>SDN Type</td><td>" +  sdn_type + "</td></tr> <tr><td>Source</td><td>" +  source + "</td></tr> <tr><td>Source List URL</td><td> <a href=" + source_list_url + " target='_blank'>" + source_list_url +  "</a></td></tr> <tr><td>title</td><td>" +  title + "</td></tr>   </table> </br></br></br></br>"
+					list += "<p class='results-legend'>" + name + "<table> <tr><td><h6 >Alternate Names:</h6></td><td>" +  alt_names + "</td></tr> <tr><td><h6>SDN Type:</h6></td><td>" +  sdn_type + "</td></tr> <tr><td><h6>Entity Number:</h6></td><td>" +  entity_number + "</td></tr> <tr><td><h6>Programs:</h6></td><td>" +  programs + "</td></tr> <tr><td><h6>Citizenships:</h6></td><td>" +  citizenships + "</td></tr> <tr><td><h6>Dates of Birth:</h6></td><td>" +  dates_of_birth + "</td></tr> <tr><td><h6>Nationalities</h6></td><td>" +  nationalities + "</td></tr> <tr><td><h6>Places of Birth</h6></td><td>" +  places_of_birth + "</td></tr>  <tr><td><h6>Title:</h6></td><td>" +  title + "</td></tr>  <tr><td><h6>Source</h6></td><td>" +  source + "</td></tr> <tr><td><h6>Source List URL</h6></td><td> <a href=" + source_list_url + " target='_blank'>" + source_list_url +  "</a></td></tr> <tr><td><h6>Remarks:</h6></td><td>" +  remarks + "</td></tr>   </table> </br></br>"
 					}
 				}
 				document.getElementById("csl-results").innerHTML = list;
@@ -85,10 +85,10 @@
 
 	function main() { 
 	    $(document).ready(function($) {
-				if (!$("link[href='']").length){
+				if (!$("link[href='stylesheets/csl.css']").length){
 					$('<script src="javascripts/spin.js" type="text/javascript"></script>').appendTo("head");
 					$('<script src="javascripts/trade-widget-vars.js" type="text/javascript"></script>').appendTo("head");
-					$('<link href="" rel="stylesheet">').appendTo("head");
+					$('<link href="stylesheets/csl.css" rel="stylesheet">').appendTo("head");
 				}
 				var container = "";
 				container += ('<div id="csl-form" class="form-container"></div>');

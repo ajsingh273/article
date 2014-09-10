@@ -1,16 +1,11 @@
 
 body {
-	-webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-align: center;
-	color: #666666;
-	font: normal 100%/1.5 "chaparral-pro", georgia, serif;
-	-webkit-font-smoothing: subpixel-antialiased;
+font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+font-weight: bold;
+text-decoration: none;
+
 }
 
-p {
-  margin: 0 auto 1.75em;
-}
 
 strong {
   font-weight: bold;
@@ -36,54 +31,20 @@ figcaption{
 }
 
 
-/* Headings
--------------------------------------------------------------- */
-h1, h2, h3, h4{
-	color: #231f20;
-	text-transform: uppercase;
-	font: 2.5em "alternate-gothic-no-1-d", sans-serif;
-}
 
-h2{
-	font-size: 2.5em;
-	border-top: 2px solid rgba(0,0,0,0.15);
-	border-bottom: 2px solid rgba(0,0,0,0.15);
-	padding: 0.4em  0 0.2em;
-	margin-bottom: 0.75em;
-}
-
-h3{
-	font-size: 2.25em;
-}
-
-
-.header h2{
-	border: none;
-	padding: 0;
-	display: inline;
-	float: left;
-	display: none;
-}
 
 /* Links
 -------------------------------------------------------------- */
 a{
-	color: #ee4938;
-	text-decoration: none;
-	-webkit-transition: color 400ms ease;
-	-moz-transition: color 400ms ease;
-	-o-transition: color 400ms ease;
-	-ms-transition: color 400ms ease;
-	transition: color 400ms ease;
+	font-weight: bold;
+text-decoration: none;
+  color: #2bb5cf;
+	
 }
 
 a:hover{
 	color: #9e3a30;
-	-webkit-transition: color 70ms ease;
-	-moz-transition: color 70ms ease;
-	-o-transition: color 70ms ease;
-	-ms-transition: color 70ms ease;
-	transition: color 70ms ease;
+	transition: color .1s linear,background-color .1s linear;
 }
 
 .url{
