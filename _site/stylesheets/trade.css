@@ -3284,8 +3284,7 @@ label.error {
 .joyride-tip-guide h2,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
-.joyride-tip-guide h5,
-.joyride-tip-guide h6 {
+.joyride-tip-guide h5{
   line-height: 1.25;
   margin: 0;
   font-weight: bold;
@@ -3867,10 +3866,10 @@ ul.pagination li {
 .panel > :last-child {
   margin-bottom: 0;
 }
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel p {
   color: #333333;
 }
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5,  {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
@@ -4582,30 +4581,36 @@ div.switch.round label {
 table {
   background: white;
   margin-bottom: 1.25rem;
-  border: solid 1px #dddddd;
+  padding-bottom: 20px;
+   border-style:solid;
+   border-top: none;
+   border-left: none;
+   border-right:none;
+    border-bottom-width:thin;
 }
 table thead,
 table tfoot {
-  background: whitesmoke;
+  background: white;
 }
 table thead tr th,
 table thead tr td,
 table tfoot tr th,
 table tfoot tr td {
   padding: 0.5rem 0.625rem 0.625rem;
-  font-size: 0.875rem;
-  font-weight: bold;
-  color: #222222;
+  font-size: 18px;
+  font-weight: normal;
+  color: #6bb801;
   text-align: left;
 }
 table tr th,
 table tr td {
   padding: 0.5625rem 0.625rem;
-  font-size: 0.875rem;
-  color: #222222;
+  font-size: 18px;
+  font-weight: normal;
+  color: #6bb801;
 }
 table tr.even, table tr.alt, table tr:nth-of-type(even) {
-  background: #f9f9f9;
+  background: #fff;
 }
 table thead tr th,
 table tfoot tr th,
@@ -5615,14 +5620,17 @@ a img {
 
 /* Default paragraph styles */
 p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
-  font-size: 12px;
+font-size:24px;
+font-weight:normal;
+text-decoration: none;
+  color: #2bb5cf;
   line-height: 1.6;
   margin-bottom: 1.25rem;
   text-transform: none;
   text-rendering: optimizeLegibility;
 }
+
+
 p.lead {
   font-size: 1.21875rem;
   line-height: 1.6;
