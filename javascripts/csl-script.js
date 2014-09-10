@@ -85,10 +85,10 @@
 
 	function main() { 
 	    $(document).ready(function($) {
-				if (!$("link[href='stylesheets/csl.css']").length){
+				if (!$("link[href='']").length){
 					$('<script src="javascripts/spin.js" type="text/javascript"></script>').appendTo("head");
 					$('<script src="javascripts/trade-widget-vars.js" type="text/javascript"></script>').appendTo("head");
-					$('<link href="stylesheets/csl.css" rel="stylesheet">').appendTo("head");
+					$('<link href="" rel="stylesheet">').appendTo("head");
 				}
 				var container = "";
 				container += ('<div id="csl-form" class="form-container"></div>');
