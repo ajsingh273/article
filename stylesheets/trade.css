@@ -1931,16 +1931,16 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #fcbf31;
-  border-color: #eda703;
-  color: #333333;
+  background-color: #6bb801;
+  border-color: #6bb801;
+  color: #fff;
   transition: background-color 300ms ease-out;
 }
 button:hover, button:focus, .button:hover, .button:focus {
-  background-color: #eda703;
+  background-color: #037e8c;
 }
 button:hover, button:focus, .button:hover, .button:focus {
-  color: #333333;
+  color:#fff;
 }
 button.secondary, .button.secondary {
   background-color: #e7e7e7;
@@ -2980,16 +2980,16 @@ textarea {
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0);
   color: white;
-  display: block;
+  
   font-size: 1.125rem;
   margin: 0 0 1rem 0;
   padding: 0.5rem;
   height: 2.5625rem;
-  width: 100%;
+  width: 85%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: all 0.15s linear;
+  
 }
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -5652,6 +5652,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   line-height: 1.4;
 }
+
+
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
   color: #7a7a7a;

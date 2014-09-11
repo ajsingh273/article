@@ -50,11 +50,15 @@ h1 {
 }
 
 .dark-blue {
-  background: #037e8c;
+  background: #024059;
+}
+
+.light-blue {
+ background: #037e8c;
 }
 
 .light-yellow {
-  background: #fef6df;
+  background: #037e8c;
 }
 
 .light-grey {
