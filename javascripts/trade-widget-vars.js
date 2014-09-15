@@ -371,6 +371,15 @@ var industryList = ["Select a Industry","Aircraft/Aircraft Parts",
 "Travel and Tourism Industries",
 ];
 
+var sourceList = ["Select a Source","DPL", 
+"DTC",
+"EL",
+"FSE", 
+"ISN", 
+"SDN", 
+"UVL", 
+];
+
 var spinnerVars = {
 	lines: 10, // The number of lines to draw
 	length: 4, // The length of each line
