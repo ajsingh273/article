@@ -52,7 +52,7 @@
 					var list = "<p></p>";
 					for (var i=0; i<=results.length-1; i++){
 						
-						var title = results[i].title;
+						var title = ressourceults[i].title;
 						var ids = results[i].ids;
 						var name = results[i].name;
 						var alt_names = results[i].alt_names;
