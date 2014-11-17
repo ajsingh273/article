@@ -1,0 +1,163 @@
+<html ng-app="myApp">
+  <head>
+	
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+ 
+		<script type="text/javascript">
+			
+			var myApp = angular.module("myApp",[]);
+ 
+			myApp.controller("PostController", function( $scope, $http ){
+				$scope.headers = ["name","source_list_url"];
+				$scope.dataPageSize = 30;
+				$scope.setPageSize = function(pageSize){$scope.dataPageSize = pageSize;}
+				$scope.toggleHeader = function( header ){
+					var headerIndex = $scope.headers.indexOf(header);
+					if (  headerIndex >= 0 ){
+						$scope.headers.splice(headerIndex,1);
+					}else{
+						$scope.headers.push(header);
+					}
+				};
+ 
+				$scope.orderTableBy = function(header){
+                    if ( $scope.orderHeader == header && $scope.orderDirection == false){
+                        $scope.orderHeader = null; // clear sort.
+                    }
+                    else if ( $scope.orderHeader == header ){
+                        $scope.orderDirection = false;
+                    }else{
+                      $scope.orderHeader = header;
+                        $scope.orderDirection = true;
+                    }
+                };
+ 
+				$scope.availableHeaders = [];
+				// using JQuery because $http does not work as expected here.. 
+				$.ajax({
+					url:"json/consolidated_screening_list", 
+					success:function(d){
+						$scope.$apply(function(){
+							$scope.data = JSON.parse(d)["results"];
+							for ( header in $scope.data[0] ){
+								$scope.availableHeaders.push(header);
+							}
+							console.log($scope.data)
+						});						
+				}
+				});
+			});
+ 
+			myApp.filter("pagingFilter", function(){
+				return function(input, currentPage, pageSize ){
+					return input ?  input.slice(currentPage * pageSize, currentPage * ( pageSize + 1 )) : [];
+				}
+ 
+			});
+			myApp.directive("paging", function(){
+ 
+        return {
+            template:'<div><button ng-disabled="!hasPrevious()" ng-click="onPrev()"> Previous </button> {{start()}} - {{end()}} out of {{size()}} <button ng-disabled="!hasNext()" ng-click="onNext()"> Next </button><div ng-transclude=""></div> </div>',
+            restrict:'AEC',
+            transclude:true,
+            scope:{
+                'currentPage':'=',
+                'pageSize':'=',
+                'data':'&'
+ 
+            },
+            link:function($scope, element, attrs){
+ 
+                $scope.size = function(){
+ 
+                    return angular.isDefined($scope.data()) ? $scope.data().length : 0;
+                };
+ 
+                $scope.end = function(){
+                    return $scope.start() + $scope.pageSize;
+                };
+ 
+                $scope.start = function(){
+                    return $scope.currentPage * $scope.pageSize;
+                };
+ 
+                $scope.page = function(){
+                    return !!$scope.size() ? ( $scope.currentPage + 1 ) : 0;
+                };
+ 
+                $scope.hasNext = function(){
+                    return $scope.page() < ( $scope.size() /  $scope.pageSize )  ;
+                };
+ 
+                $scope.onNext = function(){
+                    $scope.currentPage = parseInt($scope.currentPage) + 1;
+                };
+ 
+                $scope.hasPrevious = function(){
+                    return !!$scope.currentPage;
+                } ;
+ 
+                $scope.onPrev = function(){
+                    $scope.currentPage=$scope.currentPage-1;
+                };
+ 
+                try{
+                    if ( typeof($scope.data) == "undefined"){
+                        $scope.data = [];
+                    }
+                    if ( typeof($scope.currentPage) == "undefined" ){
+                        $scope.currentPage = 0;
+                    }
+                    if ( typeof($scope.pageSize) == "undefined"){
+                        $scope.pageSize = 10;
+                    }
+                }catch(e){ console.log(e);}
+            }
+ 
+        }
+ 
+})
+ 
+ 
+		</script>
+	</head>	
+	<body ng-controller="PostController">
+		<div>
+			<div class="search-bar">
+        		<label>Search</label><input ng-model="searchText">
+    		</div>
+			<div class="available-headers">
+				<span class="available-header" ng-click="toggleHeader(header)" ng-repeat="header in availableHeaders" style="border:1px solid black; padding:10px; border-radius:10px; line-height:40px;">
+					{{header}}
+				</span>
+			</div>
+			<div class="page-size" style="padding-top:10px; padding-bottom:10px;">
+				page size : 
+				<a href="javascript:void(0)" style="padding-left:10px" ng-click="setPageSize(pageSize)" ng-repeat="pageSize in [10,20,30]"> {{pageSize}}</a>
+			</div>
+			<paging data="tableData = ( data | orderBy:orderHeader:orderDirection | filter:searchText  )" current-page="dataCurrentPage" page-size="dataPageSize">
+				<table>
+					<tr>
+						<td 
+						ng-class="{
+									'sortBy' : head == orderHeader,
+									'asc':head == orderHeader && orderDirection == true, 
+									'desc':head == orderHeader && orderDirection == false
+								 }"
+						ng-click="orderTableBy(head)" 
+						ng-repeat="head in headers">
+							{{head}}
+						</td>
+		    		</tr>
+		    		<tr ng-repeat="d in tableData  | pagingFilter:dataPageSize:dataCurrentPage">
+		    			<td ng-repeat="head in headers">
+			    			{{d[head]}}
+			    		</td>
+			    	</tr>
+				</table>
+				Found {{tableData.length}} search results
+ 			</paging>
+		</div>
+	</body>
+</html>
