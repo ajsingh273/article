@@ -1,0 +1,54 @@
+---
+permalink: "article1.html"
+layout: article
+title: Article
+published: true
+---
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://pure.github.io/pure/libs/pure.js"></script>
+
+
+<div class="articles">
+<dl class="article">
+	<dd class="id"></dd>
+	<dt>Title</dt>
+    <dd class="title"></dd>
+    <dt>Publication Date</dt>
+    <dd class="pub_date"></dd>
+    <dt>Content</dt>
+    <dd class="content"></dd>          
+</dl>
+</div>
+
+<script>
+(function() {
+  var ready, renderData;
+  renderData = function(data) {
+    var articles, article, i, _i, _len, _results;
+    articles = data.results;
+    directive = {
+      '.article': {
+        'article <- articles': {
+          '.title': 'article.title',
+          '.pub_date': 'article.pub_date',
+          '.content': 'article.content',
+          
+        }
+      }
+    };
+    rfn = $p('.articles').compile(directive);
+    return $p('.articles').render({ articles: articles }, directive);
+  };
+
+  ready = function() {
+    var url;
+    url = 'http://api.trade.gov/trade_articles/search?callback=?';
+    return $.getJSON(url, renderData);
+  };
+
+  $(document).ready(ready);
+
+  }).call(this);
+</script>
+
